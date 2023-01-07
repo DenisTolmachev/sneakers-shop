@@ -17,5 +17,7 @@
   "trailingComma": "es5",
   "useTabs": false,
   "vueIndentScriptAndStyle": false,
-  "rangeStart": 0
+  "rangeStart": 0,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
