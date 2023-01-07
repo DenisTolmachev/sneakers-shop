@@ -1,0 +1,14 @@
+.logo {
+  @apply flex items-center;
+  > .logoImg {
+    @apply mr-4;
+  }
+
+  .headerInfoTitle {
+    @apply text-2xl font-bold uppercase;
+  }
+
+  .headerInfoText {
+    @apply text-sm text-gray-500;
+  }
+}

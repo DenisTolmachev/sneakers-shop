@@ -1,21 +1,22 @@
 import cart from '../../../img/cart.svg';
 import heart from '../../../img/heart.svg';
 import user from '../../../img/user.svg';
+import styles from './HeaderMenu.module.scss';
 
 const HeaderMenu = () => {
   return (
     <div>
-      <ul className='d-flex flex-row align-center'>
-        <li className='mr-30'>
+      <ul className={styles.headerMenuList}>
+        <li>
           <img src={cart} alt='cart' />
         </li>
-        <li className='mr-30'>
+        <li>
           <span className='text-base text-slate-500 font-medium'>300 $</span>
         </li>
-        <li className='mr-30'>
+        <li>
           <img src={heart} alt='heart' />
         </li>
-        <li className='mr-30'>
+        <li>
           <img src={user} alt='user' />
         </li>
       </ul>

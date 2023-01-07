@@ -1,0 +1,6 @@
+.headerMenuList {
+  @apply flex flex-row items-center;
+  > li {
+    @apply mr-7;
+  }
+}
