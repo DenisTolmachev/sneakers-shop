@@ -1,0 +1,17 @@
+.card {
+  @apply w-52 rounded-3xl border px-8 py-5 shadow-md;
+  .productName {
+    @apply mt-4 text-sm;
+  }
+
+  .cardBottom {
+    @apply mt-4 flex items-center justify-between;
+    .priceBlock {
+      @apply flex flex-col;
+    }
+
+    .button {
+      @apply h-8 w-8 rounded-lg border p-2 hover:bg-gray-100 hover:shadow-md;
+    }
+  }
+}

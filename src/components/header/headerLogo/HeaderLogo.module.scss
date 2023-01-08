@@ -1,7 +1,7 @@
 .logo {
   @apply flex items-center;
   > .logoImg {
-    @apply mr-4;
+    @apply mr-4 hidden sm:block;
   }
 
   .headerInfoTitle {

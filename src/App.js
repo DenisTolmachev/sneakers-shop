@@ -1,9 +1,10 @@
+import styles from './App.module.scss';
 import Content from './components/Content/Content';
 import Header from './components/header/Header';
 
 function App() {
   return (
-    <div className='max-w-[80%] m-auto mt-50 rounded-lg shadow-2xl'>
+    <div className={styles.appContainer}>
       <Header />
       <Content />
     </div>
