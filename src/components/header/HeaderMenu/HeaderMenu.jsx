@@ -1,5 +1,5 @@
 import cart from '../../../img/cart.svg';
-import heart from '../../../img/heart.svg';
+import heart from '../../../img/heart-unliked.svg';
 import user from '../../../img/user.svg';
 import styles from './HeaderMenu.module.scss';
 

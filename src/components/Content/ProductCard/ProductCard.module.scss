@@ -1,5 +1,15 @@
 .card {
-  @apply w-52 rounded-3xl border px-8 py-5 shadow-md;
+  @apply relative
+  w-52 rounded-3xl
+  border px-8 py-5
+  transition-all
+  hover:-translate-y-1
+  hover:shadow-md;
+
+  .likeHeart {
+    @apply absolute cursor-pointer;
+  }
+
   .productName {
     @apply mt-4 text-sm;
   }
@@ -11,7 +21,7 @@
     }
 
     .button {
-      @apply h-8 w-8 rounded-lg border p-2 hover:bg-gray-100 hover:shadow-md;
+      @apply h-8 w-8 rounded-lg border p-2 transition-all hover:bg-gray-100 hover:shadow-md;
     }
   }
 }

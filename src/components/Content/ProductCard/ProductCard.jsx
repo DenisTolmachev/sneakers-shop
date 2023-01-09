@@ -1,3 +1,4 @@
+import heartUnliked from '../../../img/heart-unliked.svg';
 import plusBtn from '../../../img/plusBtn.svg';
 import img1 from '../../../img/sneakers/image1.jpg';
 import styles from './ProductCard.module.scss';
@@ -5,6 +6,11 @@ import styles from './ProductCard.module.scss';
 const ProductCard = () => {
   return (
     <div className={styles.card}>
+      <img
+        className={styles.likeHeart}
+        src={heartUnliked}
+        alt='heart unliked'
+      />
       <img width={133} height={112} src={img1} alt='sneakers' />
       <h5 className={styles.productName}>Men's sneakers Nike Air Max 270</h5>
       <div className={styles.cardBottom}>
