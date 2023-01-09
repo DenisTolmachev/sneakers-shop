@@ -1,0 +1,11 @@
+.searchBar {
+  @apply relative;
+
+  input {
+    @apply mt-5 rounded-lg border p-2 pl-10 sm:mt-0;
+  }
+
+  img {
+    @apply absolute top-8 left-3 z-10 cursor-pointer sm:top-3;
+  }
+}
