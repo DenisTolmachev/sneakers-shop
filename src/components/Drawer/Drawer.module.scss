@@ -1,0 +1,11 @@
+.overlay {
+  @apply fixed left-0 top-0 z-20 h-full w-full bg-black/[0.6];
+
+  .drawer {
+    @apply absolute right-0 flex h-full w-96 flex-col bg-white p-6;
+
+    h3 {
+      @apply text-2xl font-bold;
+    }
+  }
+}

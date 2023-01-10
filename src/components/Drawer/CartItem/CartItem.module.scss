@@ -1,0 +1,18 @@
+.cartItem {
+  @apply mt-5 flex flex-row items-center justify-between rounded-lg border p-5 transition-all hover:shadow-md;
+  .cartItemInfo {
+    @apply w-36;
+
+    p {
+      @apply text-sm;
+    }
+
+    span {
+      @apply text-sm font-bold;
+    }
+  }
+
+  button {
+    @apply rounded-lg border p-2 transition-all hover:bg-gray-100 hover:shadow-md;
+  }
+}

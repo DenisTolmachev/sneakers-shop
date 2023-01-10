@@ -1,23 +1,21 @@
-import cart from '../../../img/cart.svg';
-import heart from '../../../img/heart-unliked.svg';
-import user from '../../../img/user.svg';
 import styles from './HeaderMenu.module.scss';
+import { ImCart, ImHeart, ImUser } from 'react-icons/im';
 
 const HeaderMenu = () => {
   return (
     <div>
       <ul className={styles.headerMenuList}>
         <li>
-          <img src={cart} alt='cart' />
+          <ImCart color={'#BDBDBD'} fontSize={20} />
         </li>
         <li>
           <span className='text-base text-slate-500 font-medium'>300 $</span>
         </li>
         <li>
-          <img src={heart} alt='heart' />
+          <ImHeart color={'#BDBDBD'} fontSize={20} />
         </li>
         <li>
-          <img src={user} alt='user' />
+          <ImUser color={'#BDBDBD'} fontSize={20} />
         </li>
       </ul>
     </div>
