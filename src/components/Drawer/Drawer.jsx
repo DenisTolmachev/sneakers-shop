@@ -1,9 +1,9 @@
-import CartItem from './CartItem/CartItem';
+import { CartItem } from './CartItem/CartItem';
 import styles from './Drawer.module.scss';
-import OrderingBlock from './OrderingBlock/OrderingBlock';
+import { OrderingBlock } from './OrderingBlock/OrderingBlock';
 import { ImCross } from 'react-icons/im';
 
-const Drawer = () => {
+export const Drawer = () => {
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
@@ -27,5 +27,3 @@ const Drawer = () => {
     </div>
   );
 };
-
-export default Drawer;

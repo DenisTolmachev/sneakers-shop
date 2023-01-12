@@ -1,8 +1,8 @@
 import styles from './Header.module.scss';
-import HeaderLogo from './HeaderLogo/HeaderLogo';
-import HeaderMenu from './HeaderMenu/HeaderMenu';
+import { HeaderLogo } from './HeaderLogo/HeaderLogo';
+import { HeaderMenu } from './HeaderMenu/HeaderMenu';
 
-const Header = () => {
+export const Header = () => {
   return (
     <header className={styles.header}>
       <HeaderLogo />
@@ -10,5 +10,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

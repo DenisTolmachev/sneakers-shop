@@ -1,7 +1,7 @@
 import logo from '../../../img/logo.png';
 import styles from './HeaderLogo.module.scss';
 
-const HeaderLogo = () => {
+export const HeaderLogo = () => {
   return (
     <div className={styles.logo}>
       <img className={styles.logoImg} src={logo} alt='logo' />
@@ -12,5 +12,3 @@ const HeaderLogo = () => {
     </div>
   );
 };
-
-export default HeaderLogo;

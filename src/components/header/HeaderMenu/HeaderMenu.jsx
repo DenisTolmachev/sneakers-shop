@@ -1,7 +1,7 @@
 import styles from './HeaderMenu.module.scss';
 import { ImCart, ImHeart, ImUser } from 'react-icons/im';
 
-const HeaderMenu = () => {
+export const HeaderMenu = () => {
   return (
     <div>
       <ul className={styles.headerMenuList}>
@@ -21,5 +21,3 @@ const HeaderMenu = () => {
     </div>
   );
 };
-
-export default HeaderMenu;

@@ -1,6 +1,6 @@
 import styles from './OrderingBlock.module.scss';
 
-const OrderingBlock = () => {
+export const OrderingBlock = () => {
   return (
     <div className={styles.orderingBlock}>
       <div className='flex items-end'>
@@ -17,5 +17,3 @@ const OrderingBlock = () => {
     </div>
   );
 };
-
-export default OrderingBlock;

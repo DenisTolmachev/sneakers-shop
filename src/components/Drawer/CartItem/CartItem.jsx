@@ -2,7 +2,7 @@ import img1 from '../../../img/sneakers/image1.jpg';
 import styles from './CartItem.module.scss';
 import { ImCross } from 'react-icons/im';
 
-const CartItem = () => {
+export const CartItem = () => {
   return (
     <div className={styles.cartItem}>
       <img width={70} height={70} src={img1} alt='cart' />
@@ -16,5 +16,3 @@ const CartItem = () => {
     </div>
   );
 };
-
-export default CartItem;

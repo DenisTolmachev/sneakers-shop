@@ -1,7 +1,7 @@
 import styles from './SearchBar.module.scss';
 import { FiSearch } from 'react-icons/fi';
 
-const SearchBar = () => {
+export const SearchBar = () => {
   return (
     <div className={styles.searchBar}>
       <div className={styles.icon}>
@@ -12,5 +12,3 @@ const SearchBar = () => {
     </div>
   );
 };
-
-export default SearchBar;

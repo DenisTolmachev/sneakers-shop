@@ -2,7 +2,7 @@ import img1 from '../../../img/sneakers/image1.jpg';
 import styles from './ProductCard.module.scss';
 import { ImHeart, ImPlus } from 'react-icons/im';
 
-const ProductCard = () => {
+export const ProductCard = () => {
   return (
     <div className={styles.card}>
       <ImHeart
@@ -24,5 +24,3 @@ const ProductCard = () => {
     </div>
   );
 };
-
-export default ProductCard;

@@ -1,7 +1,7 @@
-import ProductCard from './ProductCard/ProductCard';
-import SearchBar from './SearchBar/SearchBar';
+import { ProductCard } from './ProductCard/ProductCard';
+import { SearchBar } from './SearchBar/SearchBar';
 
-const Content = () => {
+export const Content = () => {
   return (
     <div className='p-40 m-auto'>
       <div className='flex flex-col sm:flex-row align-center justify-between'>
@@ -26,5 +26,3 @@ const Content = () => {
     </div>
   );
 };
-
-export default Content;
