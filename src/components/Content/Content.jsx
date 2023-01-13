@@ -2,8 +2,6 @@ import { products } from '../../mock/products';
 import { ProductCard } from './ProductCard/ProductCard';
 import { SearchBar } from './SearchBar/SearchBar';
 
-console.log(products);
-
 export const Content = () => {
   return (
     <div className='p-10 m-auto'>
@@ -15,16 +13,14 @@ export const Content = () => {
       </div>
 
       <div className='flex flex-wrap gap-5 lg:gap-9 mt-10'>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products.map(product => (
+          <ProductCard
+            key={product.id}
+            name={product.name}
+            price={product.price}
+            image={product.imgUrl}
+          />
+        ))}
       </div>
     </div>
   );

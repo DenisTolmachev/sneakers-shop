@@ -1,8 +1,7 @@
-import img1 from '../../../img/sneakers/image1.jpg';
 import styles from './ProductCard.module.scss';
 import { ImHeart, ImPlus } from 'react-icons/im';
 
-export const ProductCard = () => {
+export const ProductCard = props => {
   return (
     <div className={styles.card}>
       <ImHeart
@@ -10,12 +9,12 @@ export const ProductCard = () => {
         fontSize={20}
         style={{ position: 'absolute', cursor: 'pointer' }}
       />
-      <img width={133} height={112} src={img1} alt='sneakers' />
-      <h5 className={styles.productName}>Men's sneakers Nike Air Max 270</h5>
+      <img width={133} height={133} src={props.image} alt='sneakers' />
+      <h5 className={styles.productName}>{props.name}</h5>
       <div className={styles.cardBottom}>
         <div className={styles.priceBlock}>
           <span className='uppercase text-gray-400'>Prise:</span>
-          <b>300 $</b>
+          <b>{props.price} $</b>
         </div>
         <button className={styles.button}>
           <ImPlus color={'#BDBDBD'} fontSize={11} />
