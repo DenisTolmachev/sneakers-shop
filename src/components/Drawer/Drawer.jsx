@@ -3,14 +3,14 @@ import styles from './Drawer.module.scss';
 import { OrderingBlock } from './OrderingBlock/OrderingBlock';
 import { ImCross } from 'react-icons/im';
 
-export const Drawer = () => {
+export const Drawer = props => {
   return (
     <div className={styles.overlay}>
       <div className={styles.drawer}>
         <div className='flex-none'>
           <div className='flex justify-between'>
             <h3>Cart</h3>
-            <button>
+            <button onClick={props.onClose}>
               <ImCross color={'#BDBDBD'} />
             </button>
           </div>
