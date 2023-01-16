@@ -1,3 +1,4 @@
+import { getProducts } from '../../services/api';
 import { ProductCard } from './ProductCard/ProductCard';
 import { SearchBar } from './SearchBar/SearchBar';
 import { nanoid } from 'nanoid';
@@ -7,13 +8,9 @@ export const Content = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('https://63c4354d8067b6bef6d59cf6.mockapi.io/products')
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        setProducts(json);
-      });
+    getProducts().then(data => {
+      setProducts(data);
+    });
   }, []);
 
   return (
