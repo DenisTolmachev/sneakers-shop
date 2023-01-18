@@ -13,6 +13,10 @@ export const Content = () => {
     });
   }, []);
 
+  const onAddToCart = product => {
+    console.log(product);
+  };
+
   return (
     <div className='p-10 m-auto'>
       <div className='flex flex-col sm:flex-row align-center justify-between'>
@@ -29,6 +33,7 @@ export const Content = () => {
             name={product.name}
             price={product.price}
             imageUrl={product.imgUrl}
+            addToCart={product => onAddToCart(product)}
           />
         ))}
       </div>

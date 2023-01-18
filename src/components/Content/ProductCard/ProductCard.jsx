@@ -2,13 +2,16 @@ import styles from './ProductCard.module.scss';
 import { useState } from 'react';
 import { ImCheckmark, ImHeart, ImPlus } from 'react-icons/im';
 
-export const ProductCard = props => {
+export const ProductCard = ({ name, price, imageUrl, onPlus, onFaviorite }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
   const onClickAdd = () => {
+    onPlus({ name, price, imageUrl });
     setIsAdded(!isAdded);
   };
+
+  console.log(isAdded);
 
   const onClickFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -22,12 +25,12 @@ export const ProductCard = props => {
         style={{ position: 'absolute', cursor: 'pointer' }}
         onClick={onClickFavorite}
       />
-      <img width={142} height={177} src={props.imageUrl} alt='sneakers' />
-      <h5 className={styles.productName}>{props.name}</h5>
+      <img width={142} height={177} src={imageUrl} alt='sneakers' />
+      <h5 className={styles.productName}>{name}</h5>
       <div className={styles.cardBottom}>
         <div className={styles.priceBlock}>
           <span className='uppercase text-gray-400'>Prise:</span>
-          <b>{props.price} $</b>
+          <b>{price} $</b>
         </div>
         <button
           className={styles.button}

@@ -10,5 +10,3 @@ export const getProducts = async () => {
     console.log('Error');
   }
 };
-
-console.log(getProducts());
