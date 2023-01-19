@@ -12,3 +12,7 @@ body {
 input {
     outline: none;
 }
+
+/*фывфывф*/
+
+input:invalid

@@ -11,8 +11,6 @@ export const ProductCard = ({ name, price, imageUrl, onPlus, onFaviorite }) => {
     setIsAdded(!isAdded);
   };
 
-  console.log(isAdded);
-
   const onClickFavorite = () => {
     setIsFavorite(!isFavorite);
   };
