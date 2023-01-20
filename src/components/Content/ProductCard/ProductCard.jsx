@@ -2,7 +2,7 @@ import styles from './ProductCard.module.scss';
 import { useState } from 'react';
 import { ImCheckmark, ImHeart, ImPlus } from 'react-icons/im';
 
-export const ProductCard = ({ name, price, imageUrl, onPlus, onFaviorite }) => {
+export const ProductCard = ({ name, price, imageUrl, onPlus, onFavorite }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -12,6 +12,7 @@ export const ProductCard = ({ name, price, imageUrl, onPlus, onFaviorite }) => {
   };
 
   const onClickFavorite = () => {
+    onFavorite({ name, price, imageUrl });
     setIsFavorite(!isFavorite);
   };
 

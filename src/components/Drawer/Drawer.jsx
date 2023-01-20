@@ -5,7 +5,6 @@ import { ImCross } from 'react-icons/im';
 const drawerRoot = document.getElementById('drawer-root');
 
 export const Drawer = ({ onClose, onRemove, products = [] }) => {
-  console.log(products);
   return createPortal(
     <div className='fixed left-0 top-0 z-20 h-full w-full bg-black/[0.6]'>
       <div className='absolute right-0 flex h-full w-96 flex-col bg-white p-6'>

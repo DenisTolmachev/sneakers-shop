@@ -14,6 +14,7 @@ export const App = () => {
   const [cartOpened, setCartOpened] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     getProducts().then(data => {
@@ -38,6 +39,11 @@ export const App = () => {
     }
   };
 
+  const onAddToFavorite = obj => {
+    axios.post('https://63c4354d8067b6bef6d59cf6.mockapi.io/favorites', obj);
+    setFavorites(prev => [...prev, obj]);
+  };
+
   const searchInput = event => {
     setSearchValue(event.target.value);
   };
@@ -51,7 +57,7 @@ export const App = () => {
           onRemove={onDeleteCartItem}
         />
       )}
-      <Header onClickCart={() => setCartOpened(true)} />
+      <Header products={cartProducts} onClickCart={() => setCartOpened(true)} />
       {/*<Content />*/}
       <div className='content'>
         <div className='p-10 m-auto'>
@@ -100,7 +106,7 @@ export const App = () => {
                   name={product.name}
                   price={product.price}
                   imageUrl={product.imageUrl}
-                  onFaviorite={() => console.log('to favorite')}
+                  onFavorite={obj => onAddToFavorite(obj)}
                   onPlus={obj => onAddToCart(obj)}
                 />
               ))}
