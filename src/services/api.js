@@ -10,25 +10,9 @@ export const getProducts = async () => {
   }
 };
 
-export const addToCart = async obj => {
-  try {
-    return await axios.post(`/cart`, obj).then(res => res.data);
-  } catch (error) {
-    console.log('Error');
-  }
-};
-
 export const getCartItems = async () => {
   try {
     return await axios.get(`/cart`).then(res => res.data);
-  } catch (error) {
-    console.log('Error');
-  }
-};
-
-export const onRemoveCartItem = async id => {
-  try {
-    return await axios.delete(`/cart/${id}`).then(res => res.data);
   } catch (error) {
     console.log('Error');
   }

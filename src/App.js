@@ -3,7 +3,8 @@ import { ProductCard } from './components/Content/ProductCard/ProductCard';
 // import { Content } from './components/Content/Content';
 import { Drawer } from './components/Drawer/Drawer';
 import { Header } from './components/header/Header';
-import { addToCart, getCartItems, getProducts } from './services/api';
+import { getCartItems, getProducts } from './services/api';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { ImCross } from 'react-icons/im';
@@ -24,14 +25,17 @@ export const App = () => {
   }, []);
 
   const onAddToCart = obj => {
-    addToCart(obj);
+    axios.post('https://63c4354d8067b6bef6d59cf6.mockapi.io/cart', obj);
     setCartProducts(prev => [...prev, obj]);
   };
 
   const onDeleteCartItem = id => {
-    console.log(id);
-    // onRemoveCartItem(id);
-    setCartProducts(prev => prev.filter(item => item.id !== id));
+    try {
+      axios.delete(`https://63c4354d8067b6bef6d59cf6.mockapi.io/cart/${id}`);
+      setCartProducts(prev => prev.filter(item => item.id !== id));
+    } catch (error) {
+      console.log('error remove');
+    }
   };
 
   const searchInput = event => {
@@ -90,9 +94,9 @@ export const App = () => {
               .filter(product =>
                 product.name.toLowerCase().includes(searchValue.toLowerCase())
               )
-              .map((product, index) => (
+              .map(product => (
                 <ProductCard
-                  key={index}
+                  key={product.id}
                   name={product.name}
                   price={product.price}
                   imageUrl={product.imageUrl}
