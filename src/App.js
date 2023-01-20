@@ -57,7 +57,11 @@ export const App = () => {
           onRemove={onDeleteCartItem}
         />
       )}
-      <Header products={cartProducts} onClickCart={() => setCartOpened(true)} />
+      <Header
+        products={cartProducts}
+        favorites={favorites}
+        onClickCart={() => setCartOpened(true)}
+      />
       {/*<Content />*/}
       <div className='content'>
         <div className='p-10 m-auto'>

@@ -1,7 +1,7 @@
 import styles from './HeaderMenu.module.scss';
 import { ImCart, ImHeart, ImUser } from 'react-icons/im';
 
-export const HeaderMenu = ({ products, onClickCart }) => {
+export const HeaderMenu = ({ products, onClickCart, favorites }) => {
   return (
     <div>
       <ul className={styles.headerMenuList}>
@@ -20,7 +20,11 @@ export const HeaderMenu = ({ products, onClickCart }) => {
           <span className='text-base text-slate-500 font-medium'>300 $</span>
         </li>
         <li>
-          <ImHeart color={'#BDBDBD'} fontSize={20} cursor={'pointer'} />
+          <ImHeart
+            color={favorites.length > 0 ? '#ff0000' : '#BDBDBD'}
+            fontSize={20}
+            cursor={'pointer'}
+          />
         </li>
         <li>
           <ImUser color={'#BDBDBD'} fontSize={20} cursor={'pointer'} />
