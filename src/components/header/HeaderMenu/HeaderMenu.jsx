@@ -1,33 +1,38 @@
-import styles from './HeaderMenu.module.scss';
 import { ImCart, ImHeart, ImUser } from 'react-icons/im';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderMenu = ({ products, onClickCart, favorites }) => {
   return (
     <div>
-      <ul className={styles.headerMenuList}>
-        <li className='relative'>
-          <ImCart
-            color={products.length > 0 ? '#009A17' : '#BDBDBD'}
-            fontSize={20}
-            cursor={'pointer'}
-            onClick={onClickCart}
-          />
-          <div className='absolute flex items-center justify-center w-4 h-4 bg-red-500 text-white rounded-3xl text-xs -top-2 -right-2'>
-            {products.length}
-          </div>
+      <ul className='mt-5 flex flex-row items-center sm:mt-0'>
+        <li className='relative mr-7'>
+          <NavLink to='/cart'>
+            <ImCart
+              color={products.length > 0 ? '#009A17' : '#BDBDBD'}
+              fontSize={20}
+              cursor={'pointer'}
+            />
+            <div className='absolute flex items-center justify-center w-4 h-4 bg-red-500 text-white rounded-3xl text-xs -top-2 -right-2'>
+              {products.length}
+            </div>
+          </NavLink>
         </li>
-        <li>
+        <li className='mr-7'>
           <span className='text-base text-slate-500 font-medium'>300 $</span>
         </li>
-        <li>
-          <ImHeart
-            color={favorites.length > 0 ? '#ff0000' : '#BDBDBD'}
-            fontSize={20}
-            cursor={'pointer'}
-          />
+        <li className='mr-7'>
+          <NavLink to='/favorites'>
+            <ImHeart
+              color={favorites.length > 0 ? '#ff0000' : '#BDBDBD'}
+              fontSize={20}
+              cursor={'pointer'}
+            />
+          </NavLink>
         </li>
         <li>
-          <ImUser color={'#BDBDBD'} fontSize={20} cursor={'pointer'} />
+          <NavLink to='/profile'>
+            <ImUser color={'#BDBDBD'} fontSize={20} cursor={'pointer'} />
+          </NavLink>
         </li>
       </ul>
     </div>

@@ -1,19 +1,13 @@
-import { OrderingBlock } from './OrderingBlock/OrderingBlock';
-import { createPortal } from 'react-dom';
+import { OrderingBlock } from '../components/OrderingBlock/OrderingBlock';
 import { ImCross } from 'react-icons/im';
 
-const drawerRoot = document.getElementById('drawer-root');
-
-export const Drawer = ({ onClose, onRemove, products = [] }) => {
-  return createPortal(
-    <div className='fixed left-0 top-0 z-20 h-full w-full bg-black/[0.6]'>
-      <div className='absolute right-0 flex h-full w-96 flex-col bg-white p-6'>
+export const Cart = ({ onClose, onRemove, products = [] }) => {
+  return (
+    <div>
+      <div className=' right-0 flex w-96 flex-col bg-white p-10'>
         <div className='flex-none'>
           <div className='flex justify-between'>
             <h3 className='text-2xl font-bold'>Cart</h3>
-            <button onClick={onClose}>
-              <ImCross color={'#BDBDBD'} />
-            </button>
           </div>
         </div>
         {products.length > 0 ? (
@@ -47,7 +41,6 @@ export const Drawer = ({ onClose, onRemove, products = [] }) => {
           </div>
         )}
       </div>
-    </div>,
-    drawerRoot
+    </div>
   );
 };
