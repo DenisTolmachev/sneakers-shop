@@ -1,4 +1,3 @@
-import styles from './ProductCard.module.scss';
 import { useState } from 'react';
 import { ImCheckmark, ImHeart, ImPlus } from 'react-icons/im';
 
@@ -17,7 +16,7 @@ export const ProductCard = ({ name, price, imageUrl, onPlus, onFavorite }) => {
   };
 
   return (
-    <div className={styles.card}>
+    <div className='relative flex w-52 flex-col rounded-3xl border px-8 py-5 transition-all hover:-translate-y-1 hover:shadow-md'>
       <ImHeart
         color={isFavorite ? '#ff0000' : '#BDBDBD'}
         fontSize={20}
@@ -25,14 +24,14 @@ export const ProductCard = ({ name, price, imageUrl, onPlus, onFavorite }) => {
         onClick={onClickFavorite}
       />
       <img width={142} height={177} src={imageUrl} alt='sneakers' />
-      <h5 className={styles.productName}>{name}</h5>
-      <div className={styles.cardBottom}>
-        <div className={styles.priceBlock}>
+      <h5 className='mt-4 flex-1 text-sm'>{name}</h5>
+      <div className='mt-4 flex items-center justify-between'>
+        <div className='flex flex-col'>
           <span className='uppercase text-gray-400'>Prise:</span>
           <b>{price} $</b>
         </div>
         <button
-          className={styles.button}
+          className='rounded-lg border p-2 transition-all hover:bg-gray-100 hover:shadow-md'
           style={
             isAdded
               ? { backgroundColor: '#009A17' }
