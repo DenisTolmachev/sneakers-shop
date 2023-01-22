@@ -1,3 +1,4 @@
+import { Footer } from './components/Footer/Footer';
 import { Header } from './components/header/Header';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
@@ -70,6 +71,7 @@ export const App = () => {
         />
         <Route path='/profile' element={<UserProfile />} />
       </Routes>
+      <Footer />
     </div>
   );
 };

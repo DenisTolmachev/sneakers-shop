@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 export const Cart = ({ onRemove, products = [] }) => {
   return (
     <div className='cart'>
-      <div className='right-0 bg-white px-10 py-3'>
+      <div className='right-0 bg-white px-10 pt-3 pb-5'>
         <div className='cart_title'>
           <div className='flex justify-between'>
             <h3 className='text-2xl font-bold'>Cart</h3>
