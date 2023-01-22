@@ -1,4 +1,3 @@
-import styles from './App.module.scss';
 import { Header } from './components/header/Header';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
@@ -48,7 +47,7 @@ export const App = () => {
   };
 
   return (
-    <div className={styles.appContainer}>
+    <div className='max-w-5xl m-auto mt-5 mb-5 rounded-2xl shadow-xl'>
       <Header products={cartProducts} favorites={favorites} />
       <Routes>
         <Route
