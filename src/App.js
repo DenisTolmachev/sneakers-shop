@@ -47,7 +47,7 @@ export const App = () => {
   };
 
   return (
-    <div className='max-w-5xl m-auto mt-5 mb-5 rounded-2xl shadow-xl'>
+    <div className='max-w-5xl m-auto rounded-2xl shadow-xl'>
       <Header products={cartProducts} favorites={favorites} />
       <Routes>
         <Route

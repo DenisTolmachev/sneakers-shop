@@ -10,7 +10,7 @@ export const Home = ({
   onAddToFavorite,
 }) => {
   return (
-    <div className='p-10 m-auto'>
+    <div className='px-10 py-3 m-auto'>
       <SearchBar
         searchValue={searchValue}
         searchInput={searchInput}
