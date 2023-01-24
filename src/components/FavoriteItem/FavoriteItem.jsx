@@ -2,11 +2,11 @@ import { ImCross } from 'react-icons/im';
 
 export const FavoriteItem = ({ onRemove, favorites }) => {
   return (
-    <div>
+    <div className='flex flex-wrap'>
       {favorites.map(favorite => (
         <div
           key={favorite.id}
-          className='gap-2 mt-5 flex flex-row items-center justify-between rounded-lg border p-5 transition-all hover:shadow-md'
+          className='w-1/3 gap-2 mt-5 flex flex-row items-center justify-between rounded-lg border p-5 transition-all hover:shadow-md'
         >
           <img width={70} height={70} src={favorite.imageUrl} alt='cart' />
           <div className='w-36'>
