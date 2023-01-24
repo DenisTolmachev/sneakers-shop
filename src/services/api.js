@@ -17,3 +17,11 @@ export const getCartItems = async () => {
     console.log('Error');
   }
 };
+
+export const getFavoritesItems = async () => {
+  try {
+    return await axios.get(`/favorites`).then(res => res.data);
+  } catch (error) {
+    console.log('Error');
+  }
+};

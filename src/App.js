@@ -3,8 +3,9 @@ import { Header } from './components/header/Header';
 import { Cart } from './pages/Cart';
 import { Favorites } from './pages/Favorites';
 import { Home } from './pages/Home';
+import { PageNotFound } from './pages/PageNotFound';
 import { UserProfile } from './pages/UserProfile';
-import { getCartItems, getProducts } from './services/api';
+import { getCartItems, getFavoritesItems, getProducts } from './services/api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -22,6 +23,9 @@ export const App = () => {
     getCartItems().then(data => {
       setCartProducts(data);
     });
+    getFavoritesItems().then(data => {
+      setFavorites(data);
+    });
   }, []);
 
   const onAddToCart = obj => {
@@ -32,6 +36,17 @@ export const App = () => {
   const onDeleteCartItem = id => {
     try {
       axios.delete(`https://63c4354d8067b6bef6d59cf6.mockapi.io/cart/${id}`);
+      setCartProducts(prev => prev.filter(item => item.id !== id));
+    } catch (error) {
+      console.log('error remove');
+    }
+  };
+
+  const onDeleteFavoriteItem = id => {
+    try {
+      axios.delete(
+        `https://63c4354d8067b6bef6d59cf6.mockapi.io/favorites/${id}`
+      );
       setCartProducts(prev => prev.filter(item => item.id !== id));
     } catch (error) {
       console.log('error remove');
@@ -64,12 +79,18 @@ export const App = () => {
             />
           }
         />
-        <Route path='/favorites' element={<Favorites />} />
+        <Route
+          path='/favorites'
+          element={
+            <Favorites favorites={favorites} onRemove={onDeleteFavoriteItem} />
+          }
+        />
         <Route
           path='/cart'
           element={<Cart products={cartProducts} onRemove={onDeleteCartItem} />}
         />
         <Route path='/profile' element={<UserProfile />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
       <Footer />
     </div>
