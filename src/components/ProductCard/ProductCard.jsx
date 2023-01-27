@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { ImCheckmark, ImHeart, ImPlus } from 'react-icons/im';
 
-export const ProductCard = ({ name, price, imageUrl, onPlus, onFavorite }) => {
+export const ProductCard = ({
+  id,
+  name,
+  price,
+  imageUrl,
+  onPlus,
+  onFavorite,
+  inFavorited = false,
+}) => {
   const [isAdded, setIsAdded] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(inFavorited);
 
   const onClickAdd = () => {
     onPlus({ name, price, imageUrl });
@@ -11,7 +19,7 @@ export const ProductCard = ({ name, price, imageUrl, onPlus, onFavorite }) => {
   };
 
   const onClickFavorite = () => {
-    onFavorite({ name, price, imageUrl });
+    onFavorite({ id, name, price, imageUrl });
     setIsFavorite(!isFavorite);
   };
 
