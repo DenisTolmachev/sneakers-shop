@@ -9,6 +9,7 @@ export const Favorites = ({ favorites, onAddToFavorite }) => {
           <ProductCard
             key={product.id}
             id={product.id}
+            productId={product.productId}
             name={product.name}
             price={product.price}
             imageUrl={product.imageUrl}

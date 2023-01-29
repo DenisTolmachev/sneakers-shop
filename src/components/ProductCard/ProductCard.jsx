@@ -3,23 +3,25 @@ import { ImCheckmark, ImHeart, ImPlus } from 'react-icons/im';
 
 export const ProductCard = ({
   id,
+  productId,
   name,
   price,
   imageUrl,
   onPlus,
   onFavorite,
   inFavorited = false,
+  added = false,
 }) => {
-  const [isAdded, setIsAdded] = useState(false);
+  const [isAdded, setIsAdded] = useState(added);
   const [isFavorite, setIsFavorite] = useState(inFavorited);
 
   const onClickAdd = () => {
-    onPlus({ name, price, imageUrl });
+    onPlus({ id, productId, name, price, imageUrl });
     setIsAdded(!isAdded);
   };
 
   const onClickFavorite = () => {
-    onFavorite({ id, name, price, imageUrl });
+    onFavorite({ id, productId, name, price, imageUrl });
     setIsFavorite(!isFavorite);
   };
 
