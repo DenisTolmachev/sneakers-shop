@@ -1,6 +1,10 @@
 import { ProductCard } from '../components/ProductCard/ProductCard';
+import AppContext from '../context';
+import { useContext } from 'react';
 
-export const Favorites = ({ favorites, onAddToFavorite }) => {
+export const Favorites = ({ onAddToFavorite }) => {
+  const { favorites } = useContext(AppContext);
+
   return (
     <div className='px-10 py-3 flex-1'>
       <h3 className='text-2xl font-bold'>Favorites</h3>

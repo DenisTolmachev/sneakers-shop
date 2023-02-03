@@ -10,7 +10,6 @@ export const Home = ({
   searchInput,
   onAddToCart,
   onAddToFavorite,
-  isLoading,
 }) => {
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -41,7 +40,6 @@ export const Home = ({
             )}
             onFavorite={obj => onAddToFavorite(obj)}
             onPlus={obj => onAddToCart(obj)}
-            loading={isLoading}
           />
         ))}
       </div>
