@@ -93,7 +93,13 @@ export const App = () => {
 
   return (
     <AppContext.Provider
-      value={{ products, cartProducts, favorites, isProductAdded }}
+      value={{
+        products,
+        cartProducts,
+        favorites,
+        isProductAdded,
+        setCartProducts,
+      }}
     >
       <div className='max-w-5xl m-auto rounded-2xl shadow-xl min-h-full flex flex-col'>
         <Header products={cartProducts} favorites={favorites} />
