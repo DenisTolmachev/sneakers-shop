@@ -34,14 +34,14 @@ export const App = () => {
   const onAddToCart = async obj => {
     console.log(obj);
     const findProduct = cartProducts.find(
-      item => Number(item.productId) === Number(obj.id)
+      item => Number(item.productId) === Number(obj.productId)
     );
     try {
       if (findProduct) {
         setCartProducts(prev =>
-          prev.filter(item => Number(item.productId) !== Number(obj.id))
+          prev.filter(item => Number(item.productId) !== Number(obj.productId))
         );
-        await axios.delete(`/cart/${findProduct.id}`);
+        await axios.delete(`/cart/${findProduct.productId}`);
       } else {
         setCartProducts(prev => [...prev, obj]);
         await axios.post('/cart', obj);
@@ -51,10 +51,12 @@ export const App = () => {
     }
   };
 
-  const onDeleteCartItem = id => {
+  const onDeleteCartItem = productId => {
     try {
-      axios.delete(`/cart/${id}`);
-      setCartProducts(prev => prev.filter(item => item.productId !== id));
+      axios.delete(`/cart/${productId}`);
+      setCartProducts(prev =>
+        prev.filter(item => item.productId !== productId)
+      );
     } catch (error) {
       console.log('error remove');
     }
@@ -63,10 +65,14 @@ export const App = () => {
   const onAddToFavorite = async obj => {
     console.log(obj);
     try {
-      if (favorites.find(favObj => Number(favObj.id) === Number(obj.id))) {
-        axios.delete(`/favorites/${obj.id}`);
+      if (
+        favorites.find(
+          favObj => Number(favObj.productId) === Number(obj.productId)
+        )
+      ) {
+        axios.delete(`/favorites/${obj.productId}`);
         setFavorites(prev =>
-          prev.filter(item => Number(item.id) !== Number(obj.id))
+          prev.filter(item => Number(item.productId) !== Number(obj.productId))
         );
       } else {
         const { data } = await axios.post('/favorites', obj);
@@ -81,8 +87,14 @@ export const App = () => {
     setSearchValue(event.target.value);
   };
 
+  const isProductAdded = id => {
+    return cartProducts.some(obj => Number(obj.productId) === Number(id));
+  };
+
   return (
-    <AppContext.Provider value={{ products, cartProducts, favorites }}>
+    <AppContext.Provider
+      value={{ products, cartProducts, favorites, isProductAdded }}
+    >
       <div className='max-w-5xl m-auto rounded-2xl shadow-xl'>
         <Header products={cartProducts} favorites={favorites} />
         <Routes>

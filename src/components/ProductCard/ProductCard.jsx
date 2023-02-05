@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import AppContext from '../../context';
+import { useContext, useState } from 'react';
 import { ImCheckmark, ImHeart, ImPlus } from 'react-icons/im';
 
 export const ProductCard = ({
@@ -9,15 +10,13 @@ export const ProductCard = ({
   imageUrl,
   onPlus,
   onFavorite,
-  inFavorited = false,
-  added = false,
+  inFavorite = false,
 }) => {
-  const [isAdded, setIsAdded] = useState(added);
-  const [isFavorite, setIsFavorite] = useState(inFavorited);
+  const { isProductAdded } = useContext(AppContext);
+  const [isFavorite, setIsFavorite] = useState(inFavorite);
 
   const onClickAdd = () => {
     onPlus({ id, productId, name, price, imageUrl });
-    setIsAdded(!isAdded);
   };
 
   const onClickFavorite = () => {
@@ -43,13 +42,13 @@ export const ProductCard = ({
         <button
           className='rounded-lg border p-2 transition-all hover:bg-gray-100 hover:shadow-md'
           style={
-            isAdded
+            isProductAdded(id)
               ? { backgroundColor: '#009A17' }
               : { backgroundColor: '#ffffff' }
           }
           onClick={onClickAdd}
         >
-          {isAdded ? (
+          {isProductAdded(id) ? (
             <ImCheckmark color={'#ffffff'} fontSize={11} />
           ) : (
             <ImPlus color={'#BDBDBD'} fontSize={11} />

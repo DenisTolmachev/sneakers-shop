@@ -3,7 +3,6 @@ import { SearchBar } from '../components/SearchBar/SearchBar';
 
 export const Home = ({
   products,
-  cartProducts,
   favorites,
   searchValue,
   setSearchValue,
@@ -27,19 +26,12 @@ export const Home = ({
         {filteredProducts.map(product => (
           <ProductCard
             key={product.id}
-            id={product.id}
-            productId={product.productId}
-            name={product.name}
-            price={product.price}
-            imageUrl={product.imageUrl}
-            added={cartProducts.some(
-              obj => Number(obj.productId) === Number(product.productId)
-            )}
             inFavorited={favorites.some(
               obj => Number(obj.productId) === Number(product.productId)
             )}
             onFavorite={obj => onAddToFavorite(obj)}
             onPlus={obj => onAddToCart(obj)}
+            {...product}
           />
         ))}
       </div>

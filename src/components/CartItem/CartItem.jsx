@@ -17,6 +17,7 @@ export const CartItem = ({ onRemove, products }) => {
             className='border w-14 pl-2 rounded'
             id='number'
             type='number'
+            defaultValue={1}
             min={1}
             max={10}
           />

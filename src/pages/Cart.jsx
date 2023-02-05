@@ -1,6 +1,7 @@
 import { CartItem } from '../components/CartItem/CartItem';
+import { InfoPage } from '../components/InfoPage/InfoPage';
 import { OrderingBlock } from '../components/OrderingBlock/OrderingBlock';
-import { NavLink } from 'react-router-dom';
+import emptyCart from '../img/emptyCart.png';
 
 export const Cart = ({ onRemove, products = [] }) => {
   return (
@@ -17,12 +18,11 @@ export const Cart = ({ onRemove, products = [] }) => {
             <OrderingBlock />
           </div>
         ) : (
-          <div>
-            <p>Нету тута нихера</p>
-            <button className='border'>
-              <NavLink to='/'>Move to main</NavLink>
-            </button>
-          </div>
+          <InfoPage
+            img={emptyCart}
+            title='Cart is empty!'
+            description='Please add at least one item to cart!'
+          />
         )}
       </div>
     </div>
