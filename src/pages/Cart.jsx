@@ -5,7 +5,7 @@ import emptyCart from '../img/emptyCart.png';
 
 export const Cart = ({ onRemove, products = [] }) => {
   return (
-    <div className='cart'>
+    <div className='cart flex-1'>
       <div className='right-0 bg-white px-10 pt-3 pb-5'>
         <div className='cart_title'>
           <div className='flex justify-between'>

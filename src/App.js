@@ -95,7 +95,7 @@ export const App = () => {
     <AppContext.Provider
       value={{ products, cartProducts, favorites, isProductAdded }}
     >
-      <div className='max-w-5xl m-auto rounded-2xl shadow-xl'>
+      <div className='max-w-5xl m-auto rounded-2xl shadow-xl min-h-full flex flex-col'>
         <Header products={cartProducts} favorites={favorites} />
         <Routes>
           <Route
