@@ -1,7 +1,10 @@
+import { useCart } from '../../../hooks/useCart';
 import { ImCart, ImHeart, ImUser } from 'react-icons/im';
 import { NavLink } from 'react-router-dom';
 
-export const HeaderMenu = ({ products, onClickCart, favorites }) => {
+export const HeaderMenu = ({ products, favorites }) => {
+  const { totalPrice } = useCart();
+
   return (
     <div>
       <ul className='mt-5 flex flex-row items-center sm:mt-0'>
@@ -18,7 +21,9 @@ export const HeaderMenu = ({ products, onClickCart, favorites }) => {
           </NavLink>
         </li>
         <li className='mr-7'>
-          <span className='text-base text-slate-500 font-medium'>300 $</span>
+          <span className='text-base text-slate-500 font-medium'>
+            {totalPrice} $
+          </span>
         </li>
         <li className='mr-7'>
           <NavLink to='/favorites'>
