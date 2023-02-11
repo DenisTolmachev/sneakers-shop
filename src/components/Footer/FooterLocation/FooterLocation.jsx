@@ -2,7 +2,7 @@ import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import React from 'react';
 
 const containerStyle = {
-  width: '400px',
+  //width: '33.333333%',
   height: '300px',
 };
 
@@ -22,12 +22,16 @@ function FooterLocation() {
     googleMapsApiKey: 'AIzaSyDyq9qpE1UgMySJNUV4E_YfT5jleKsxU9c',
   });
 
-  return isLoaded ? (
-    <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}>
-      <Marker position={position} />
-    </GoogleMap>
-  ) : (
-    <></>
+  return (
+    <div className='w-2/5 pl-5 border-l-2'>
+      {isLoaded ? (
+        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}>
+          <Marker position={position} />
+        </GoogleMap>
+      ) : (
+        <></>
+      )}
+    </div>
   );
 }
 
