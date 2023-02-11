@@ -7,8 +7,13 @@ export const OrdersItems = () => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     (async () => {
-      const orderResponse = await axios.get('/orders');
-      setOrders(orderResponse.data);
+      try {
+        const orderResponse = await axios.get('/orders');
+        setOrders(orderResponse.data);
+      } catch (e) {
+        alert('Error');
+        console.error('error');
+      }
     })();
   }, []);
 

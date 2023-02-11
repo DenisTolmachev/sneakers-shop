@@ -20,13 +20,17 @@ export const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const cartResponse = await axios.get('/cart');
-      const favoritesResponse = await axios.get('/favorites');
-      const productsResponse = await axios.get('/products');
+      try {
+        const cartResponse = await axios.get('/cart');
+        const favoritesResponse = await axios.get('/favorites');
+        const productsResponse = await axios.get('/products');
 
-      setCartProducts(cartResponse.data);
-      setFavorites(favoritesResponse.data);
-      setProducts(productsResponse.data);
+        setCartProducts(cartResponse.data);
+        setFavorites(favoritesResponse.data);
+        setProducts(productsResponse.data);
+      } catch (e) {
+        alert('error');
+      }
     };
     fetchData();
   }, []);
@@ -70,7 +74,7 @@ export const App = () => {
           favObj => Number(favObj.productId) === Number(obj.productId)
         )
       ) {
-        axios.delete(`/favorites/${obj.productId}`);
+        await axios.delete(`/favorites/${obj.productId}`);
         setFavorites(prev =>
           prev.filter(item => Number(item.productId) !== Number(obj.productId))
         );
