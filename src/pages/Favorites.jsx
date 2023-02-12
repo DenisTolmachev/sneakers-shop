@@ -4,8 +4,8 @@ import AppContext from '../context';
 import emptyFavorites from '../img/emptyFavorites.png';
 import { useContext } from 'react';
 
-export const Favorites = ({ onAddToFavorite }) => {
-  const { favorites } = useContext(AppContext);
+export const Favorites = () => {
+  const { favorites, onAddToFavorite, onAddToCart } = useContext(AppContext);
 
   return (
     <div className='px-10 py-3 flex-1'>
@@ -15,8 +15,8 @@ export const Favorites = ({ onAddToFavorite }) => {
           {favorites.map(product => (
             <ProductCard
               key={product.id}
-              inFavorited={true}
               onFavorite={onAddToFavorite}
+              onPlus={onAddToCart}
               {...product}
             />
           ))}

@@ -21,9 +21,12 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const cartResponse = await axios.get('/cart');
-        const favoritesResponse = await axios.get('/favorites');
-        const productsResponse = await axios.get('/products');
+        const [cartResponse, favoritesResponse, productsResponse] =
+          await Promise.all([
+            axios.get('/cart'),
+            axios.get('/favorites'),
+            axios.get('/products'),
+          ]);
 
         setCartProducts(cartResponse.data);
         setFavorites(favoritesResponse.data);
@@ -36,30 +39,40 @@ export const App = () => {
   }, []);
 
   const onAddToCart = async obj => {
-    console.log(obj);
-    const findProduct = cartProducts.find(
-      item => Number(item.productId) === Number(obj.productId)
-    );
     try {
+      const findProduct = cartProducts.find(
+        item => Number(item.productId) === Number(obj.id)
+      );
       if (findProduct) {
         setCartProducts(prev =>
-          prev.filter(item => Number(item.productId) !== Number(obj.productId))
+          prev.filter(item => Number(item.productId) !== Number(obj.id))
         );
-        await axios.delete(`/cart/${findProduct.productId}`);
+        await axios.delete(`/cart/${findProduct.id}`);
       } else {
         setCartProducts(prev => [...prev, obj]);
-        await axios.post('/cart', obj);
+        const { data } = await axios.post('/cart', obj);
+        setCartProducts(prev =>
+          prev.map(item => {
+            if (item.productId === data.productId) {
+              return {
+                ...item,
+                id: data.id,
+              };
+            }
+            return item;
+          })
+        );
       }
     } catch (error) {
       console.log('Ups, failed to add to cart');
     }
   };
 
-  const onDeleteCartItem = productId => {
+  const onDeleteCartItem = id => {
     try {
-      axios.delete(`/cart/${productId}`);
+      axios.delete(`/cart/${id}`);
       setCartProducts(prev =>
-        prev.filter(item => item.productId !== productId)
+        prev.filter(item => Number(item.id) !== Number(id))
       );
     } catch (error) {
       console.log('error remove');
@@ -67,20 +80,29 @@ export const App = () => {
   };
 
   const onAddToFavorite = async obj => {
-    console.log(obj);
     try {
-      if (
-        favorites.find(
-          favObj => Number(favObj.productId) === Number(obj.productId)
-        )
-      ) {
-        await axios.delete(`/favorites/${obj.productId}`);
+      const findFavorites = favorites.find(
+        item => Number(item.productId) === Number(obj.id)
+      );
+      if (findFavorites) {
         setFavorites(prev =>
-          prev.filter(item => Number(item.productId) !== Number(obj.productId))
+          prev.filter(item => Number(item.productId) !== Number(obj.id))
         );
+        await axios.delete(`/favorites/${findFavorites.id}`);
       } else {
+        setFavorites(prev => [...prev, obj]);
         const { data } = await axios.post('/favorites', obj);
-        setFavorites(prev => [...prev, data]);
+        setFavorites(prev =>
+          prev.map(item => {
+            if (item.productId === data.productId) {
+              return {
+                ...item,
+                id: data.id,
+              };
+            }
+            return item;
+          })
+        );
       }
     } catch (error) {
       console.log('Ups, failed to add to favourites');
@@ -95,6 +117,10 @@ export const App = () => {
     return cartProducts.some(obj => Number(obj.productId) === Number(id));
   };
 
+  const isFavoriteAdded = id => {
+    return favorites.some(obj => Number(obj.productId) === Number(id));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -102,36 +128,19 @@ export const App = () => {
         cartProducts,
         favorites,
         isProductAdded,
+        isFavoriteAdded,
+        onAddToCart,
+        onAddToFavorite,
         setCartProducts,
+        searchValue,
+        searchInput,
       }}
     >
       <div className='max-w-5xl m-auto rounded-2xl shadow-xl min-h-full flex flex-col'>
         <Header products={cartProducts} favorites={favorites} />
         <Routes>
-          <Route
-            path='/'
-            element={
-              <Home
-                products={products}
-                cartProducts={cartProducts}
-                favorites={favorites}
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-                searchInput={searchInput}
-                onAddToCart={onAddToCart}
-                onAddToFavorite={onAddToFavorite}
-              />
-            }
-          />
-          <Route
-            path='/favorites'
-            element={
-              <Favorites
-                // favorites={favorites}
-                onAddToFavorite={onAddToFavorite}
-              />
-            }
-          />
+          <Route path='/' element={<Home />} />
+          <Route path='/favorites' element={<Favorites />} />
           <Route
             path='/cart'
             element={

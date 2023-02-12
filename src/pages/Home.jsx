@@ -1,15 +1,18 @@
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import { SearchBar } from '../components/SearchBar/SearchBar';
+import AppContext from '../context';
+import { useContext } from 'react';
 
-export const Home = ({
-  products,
-  favorites,
-  searchValue,
-  setSearchValue,
-  searchInput,
-  onAddToCart,
-  onAddToFavorite,
-}) => {
+export const Home = () => {
+  const {
+    products,
+    searchValue,
+    setSearchValue,
+    searchInput,
+    onAddToCart,
+    onAddToFavorite,
+  } = useContext(AppContext);
+
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchValue.toLowerCase())
   );
@@ -26,11 +29,8 @@ export const Home = ({
         {filteredProducts.map(product => (
           <ProductCard
             key={product.id}
-            inFavorited={favorites.some(
-              obj => Number(obj.productId) === Number(product.productId)
-            )}
-            onFavorite={obj => onAddToFavorite(obj)}
-            onPlus={obj => onAddToCart(obj)}
+            onFavorite={onAddToFavorite}
+            onPlus={onAddToCart}
             {...product}
           />
         ))}
