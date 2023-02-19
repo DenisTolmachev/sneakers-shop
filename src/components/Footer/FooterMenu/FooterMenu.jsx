@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 export const FooterMenu = () => {
   return (
-    <div className='flex flex-col px-5 w-1/5 items-center'>
+    <div className='flex flex-col px-5 w-full md:w-1/5 items-center mt-5 md:mt-0'>
       <div>
         <h3 className='text-lg font-bold'>Menu</h3>
         <ul className='mt-2 text-base text-slate-500 font-medium'>

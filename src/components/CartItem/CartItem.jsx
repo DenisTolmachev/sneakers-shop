@@ -5,7 +5,7 @@ export const CartItem = ({ onRemove, products }) => {
   const { totalPrice } = useCart();
 
   return (
-    <div className='cart_item lg:w-1/2 px-5 lg:border-r-2 md:w-full'>
+    <div className='cart_item lg:w-1/2 px-0 md:px-5 lg:border-r-2 md:w-full'>
       {products.map(product => (
         <div
           key={product.id}

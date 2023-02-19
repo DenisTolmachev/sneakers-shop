@@ -136,7 +136,7 @@ export const App = () => {
         searchInput,
       }}
     >
-      <div className='max-w-5xl m-auto rounded-2xl shadow-xl min-h-full flex flex-col'>
+      <div className='min-w-full md:max-w-5xl m-auto rounded-2xl shadow-xl min-h-full flex flex-col'>
         <Header products={cartProducts} favorites={favorites} />
         <Routes>
           <Route path='/' element={<Home />} />

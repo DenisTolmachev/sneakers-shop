@@ -4,7 +4,7 @@ import { FooterMenu } from './FooterMenu/FooterMenu';
 
 export const Footer = () => {
   return (
-    <div className='flex flex-wrap p-10 w-full border-t-2 border-t-gray-200'>
+    <div className='flex flex-col md:flex-row p-10 w-full border-t-2 border-t-gray-200'>
       <FooterInfo />
       <FooterMenu />
       <FooterLocation />

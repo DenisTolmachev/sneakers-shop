@@ -15,7 +15,7 @@ export const ProductCard = ({ id, name, price, imageUrl }) => {
   };
 
   return (
-    <div className='relative flex w-52 flex-col rounded-3xl border px-8 py-5 transition-all hover:-translate-y-1 hover:shadow-md'>
+    <div className='relative flex w-52 flex-col rounded-3xl border px-8 py-5 transition-all hover:-translate-y-1 hover:shadow-md m-2'>
       <>
         <ImHeart
           color={isFavoriteAdded(id) ? '#ff0000' : '#BDBDBD'}

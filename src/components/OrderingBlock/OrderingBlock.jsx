@@ -1,6 +1,6 @@
 export const OrderingBlock = ({ onClickOrder }) => {
   return (
-    <div className='lg:w-1/2 px-5 mt-5 md:w-full'>
+    <div className='lg:w-1/2 px-0 md:px-5 mt-5 md:w-full'>
       <form className='flex flex-col'>
         <div className='py-3 border-b flex flex-col'>
           <h3 className='text-xl font-bold mb-2'>Buyer</h3>

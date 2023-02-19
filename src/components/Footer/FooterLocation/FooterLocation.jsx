@@ -23,7 +23,7 @@ function FooterLocation() {
   });
 
   return (
-    <div className='w-2/5 pl-5 border-l-2'>
+    <div className='w-full md:w-2/5 md:pl-5 border-0 md:border-l-2 mt-5 md:mt-0'>
       {isLoaded ? (
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={17}>
           <Marker position={position} />

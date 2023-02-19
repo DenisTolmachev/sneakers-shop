@@ -18,14 +18,14 @@ export const Home = () => {
   );
 
   return (
-    <div className='px-10 py-3 m-auto'>
+    <div className='w-full px-10 py-3'>
       <SearchBar
         searchValue={searchValue}
         searchInput={searchInput}
         setSearchValue={setSearchValue}
       />
 
-      <div className='flex flex-wrap gap-5 lg:gap-9 mt-10'>
+      <div className='flex flex-row flex-wrap justify-around mt-10'>
         {filteredProducts.map(product => (
           <ProductCard
             key={product.id}
